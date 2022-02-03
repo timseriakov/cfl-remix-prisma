@@ -1,0 +1,33 @@
+.page__wrapper {
+  /*background-color: ${themeStyle.palette.accents_1};*/
+  min-height: calc(100vh - 172px);
+}
+
+.page__content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /*width: ${themeStyle.layout.pageWidthWithMargin};*/
+  max-width: 100%;
+  margin: 0 auto;
+  /*padding: calc(${themeStyle.layout.unit} * 2)*/
+  /*${themeStyle.layout.pageMargin};*/
+  box-sizing: border-box;
+}
+
+.upload-area {
+  position: relative;
+}
+
+.upload-area__icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.3;
+}
+
+.upload-area__avatar {
+  position: relative;
+  z-index: 99;
+}

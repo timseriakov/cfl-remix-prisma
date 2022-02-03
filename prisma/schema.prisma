@@ -1,0 +1,109 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://cfl:cfl@10.17.0.135:5432/cfl?schema=public"
+}
+
+model actions {
+  id           BigInt  @id @default(autoincrement())
+  action_type  String  @db.VarChar(255)
+  target_type  String  @db.VarChar(255)
+  filter_type  String  @db.VarChar(255)
+  description  String? @db.VarChar(1024)
+  filter_value String? @db.VarChar(255)
+}
+
+model building {
+  id                BigInt             @id @default(autoincrement())
+  action            String?            @db.VarChar(1024)
+  action_sign       String?            @db.VarChar(255)
+  object_image      String?            @db.VarChar(255)
+  object_name       String?            @db.VarChar(255)
+  object_profit     Int?
+  price             Int?
+  category_id       BigInt?
+  color             String?            @db.VarChar(255)
+  exchange          Boolean?
+  action_profit     Int?
+  min_play_value    Int?
+  max_play_value    Int?
+  building_category building_category? @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fkdbhglcvrcsv9y0fdcshh33aoc")
+  building_team     building_team[]
+}
+
+model building_category {
+  id       BigInt     @id @default(autoincrement())
+  image    String?    @db.VarChar(255)
+  name     String?    @db.VarChar(255)
+  building building[]
+}
+
+model building_team {
+  id          BigInt    @id @default(autoincrement())
+  coordinates String?   @db.VarChar(255)
+  building_id BigInt?
+  team_id     BigInt?
+  building    building? @relation(fields: [building_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fkr8ycn07tvn641pf7ww317bd2r")
+  team        team?     @relation(fields: [team_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fkq761x8qb54rtvhwaip29jt2df")
+}
+
+model coin_transactions {
+  id               BigInt   @id @default(autoincrement())
+  amount           BigInt
+  insert_date      DateTime @db.Date
+  transaction_type BigInt
+  destination      BigInt
+  source           BigInt
+}
+
+model invite {
+  id        BigInt  @id @default(autoincrement())
+  hash      String? @db.VarChar(255)
+  player_id BigInt?
+  player    player? @relation(fields: [player_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk68j4n4xx6k4mx5eo18jvqdd1u")
+}
+
+model player {
+  id             BigInt   @id @default(autoincrement())
+  avatar         Bytes?
+  is_captain     Boolean?
+  name           String?  @db.VarChar(255)
+  team_id        BigInt?
+  is_active      Boolean  @default(true)
+  firebase_token String?  @db.VarChar(255)
+  team           team?    @relation(fields: [team_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fkdvd6ljes11r44igawmpm1mc5s")
+  invite         invite[]
+}
+
+model team {
+  id            BigInt          @id @default(autoincrement())
+  avatar        Bytes?
+  is_active     Boolean
+  name          String?         @db.VarChar(255)
+  points        Int?
+  building_team building_team[]
+  player        player[]
+}
+
+model votings_type {
+  id          BigInt   @id @default(autoincrement())
+  type_name   String   @db.VarChar(512)
+  title       String?  @db.VarChar(255)
+  wait_time   BigInt
+  percent     BigInt?  @default(100)
+  type_vote   String   @db.VarChar(255)
+  description String?  @db.VarChar(255)
+  multivote   Boolean?
+  type_entity String?  @db.VarChar(255)
+}
+
+model admin {
+  username     String
+  passwordHash String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  id           String   @id @default(uuid())
+}
