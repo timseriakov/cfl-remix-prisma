@@ -6,8 +6,8 @@ import {GeistProvider} from "@geist-ui/core";
 export const links = () => [{ rel: 'stylesheet', href: globalStylesUrl }]
 
 export const meta = () => {
-  const description = ' '
-  const keywords = ' '
+  const description = ""
+  const keywords = ""
 
   return {
     description,
