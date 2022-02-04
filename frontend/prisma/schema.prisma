@@ -101,9 +101,9 @@ model votings_type {
 }
 
 model admin {
-  id           String   @id @default(uuid())
   username     String   @unique
   passwordHash String
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+  id           String   @id @default(uuid())
 }
