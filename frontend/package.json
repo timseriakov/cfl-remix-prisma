@@ -26,7 +26,8 @@
   "devDependencies": {
     "@remix-run/dev": "^1.0.6",
     "@types/bcrypt": "^5.0.0",
-    "prisma": "^3.9.1"
+    "prisma": "^3.9.1",
+    "ansi-regex": ">=5.0.1"
   },
   "engines": {
     "node": ">=14"
