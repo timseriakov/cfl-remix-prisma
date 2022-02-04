@@ -39,6 +39,7 @@ export async function register({ username, password }: LoginDataType) {
 // Get session secret
 const sessionSecret = process.env.SESSION_SECRET
 if (!sessionSecret) {
+  console.log("sessionSecret: " + sessionSecret)
   throw new Error('No session secret')
 }
 
