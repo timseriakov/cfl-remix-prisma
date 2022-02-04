@@ -8,6 +8,7 @@ RUN mkdir /app
 WORKDIR /app
 
 ADD package.json package-lock.json ./
+COPY prisma ./prisma/
 RUN npm install --production=false
 
 # Setup production node_modules
@@ -31,6 +32,9 @@ WORKDIR /app
 COPY --from=deps /app/node_modules /app/node_modules
 
 ADD . .
+#CMD ["npm", "run", "start"]
+
+RUN npx prisma generate run build
 RUN npm run build
 
 # Build production image
