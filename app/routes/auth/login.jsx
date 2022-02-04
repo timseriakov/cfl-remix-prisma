@@ -49,7 +49,7 @@ export const action = async ({ request }) => {
       }
 
       // Create Session
-      return createUserSession(user.id, '/posts')
+      return createUserSession(user.id, '/')
     }
     case 'register': {
       // Check if user exists
@@ -75,7 +75,7 @@ export const action = async ({ request }) => {
       }
 
       // Create session
-      return createUserSession(user.id, '/posts')
+      return createUserSession(user.id, '/')
     }
     default: {
       return badRequest({

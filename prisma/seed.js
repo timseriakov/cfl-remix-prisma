@@ -2,16 +2,16 @@ const {PrismaClient} = require('@prisma/client')
 const prisma = new PrismaClient()
 
 async function seed() {
-  const john = await prisma.admin.create({
+  const admin = await prisma.admin.create({
     data: {
-      username: 'john',
-      // Hash for password - twixrox
+      username: 'admin',
+      // Hash for password - zxczxc
       passwordHash:
-        '$2b$10$K7L1OJ45/4Y2nIvhRVpCe.FSmhDdWoXehVzJptJ/op0lSsvqNu/1u',
+        '$2b$10$AFYbgL6M6904ieADxhqG2.gK8fNIa.8oXI2Rqfs0XggQRI9X5Jfra',
     },
   })
 
-  return john
+  return admin
 }
 
 seed()
