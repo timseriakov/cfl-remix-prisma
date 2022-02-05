@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  frontend:
+    build: ./frontend
+    command: npm run start
+    ports:
+      # host:container
+      - "80:80"
