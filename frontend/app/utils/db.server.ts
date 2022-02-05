@@ -17,4 +17,10 @@ if (process.env.NODE_ENV === 'production') {
   db = global.__db
 }
 
+// console.log(`{db_url}`);
+// console.log(`{host}`);
+// console.log(`{port}`);
+// console.log(`{mode}`);
+
+
 export { db }

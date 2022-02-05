@@ -44,8 +44,6 @@ FROM base
 
 ENV NODE_ENV=production
 ENV PORT=80
-ENV DATABASE_URL="postgresql://cfl:cfl@10.17.0.135:5432/cfl?schema=public"
-ENV SESSION_SECRET="secret"
 
 RUN mkdir /app
 WORKDIR /app
