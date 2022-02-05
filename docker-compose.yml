@@ -4,6 +4,8 @@ services:
   frontend:
     build: ./frontend
     command: npm run start
+    restart: unless-stopped
     ports:
       # host:container
       - "80:80"
+    env_file: .env.production

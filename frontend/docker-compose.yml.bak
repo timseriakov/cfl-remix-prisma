@@ -1,9 +1,0 @@
-version: "3"
-  
-services:
-  app:
-    image: cfl-remix-image
-    container_name: cfl-remix-container
-    restart: always
-    ports:
-      - "80:80"
