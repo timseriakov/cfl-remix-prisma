@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgresql://cfl:cfl@10.17.0.135:5432/cfl?schema=public"
+  url      = env("DATABASE_URL")
 }
 
 model actions {
