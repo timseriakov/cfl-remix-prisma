@@ -4,9 +4,9 @@ services:
   frontend:
     build: ./frontend
     command: npm run start
-    env_file: .env.production
+    env_file: .env.development.local
     ports:
-      - ${POSTGRES_PORT:-80}:80 # host:container
+      - ${POSTGRES_PORT:-8080}:8080 # host:container
     depends_on: 
       - pg_db
     restart: unless-stopped
