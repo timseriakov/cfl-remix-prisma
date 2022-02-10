@@ -17,3 +17,8 @@ services:
     ports:
       - ${POSTGRES_PORT:-5432}:5432
     restart: unless-stopped
+    volumes:
+      - ./pg_db-data:/var/lib/postgresql/data
+
+volumes:
+  pg_db-data:
