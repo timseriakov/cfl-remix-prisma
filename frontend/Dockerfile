@@ -1,5 +1,5 @@
 # Base Node image
-FROM node:16.13.2-alpine3.14 as base
+FROM node:gallium-alpine3.14 as base
 
 # Setup all node_modules
 FROM base as deps
